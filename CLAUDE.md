@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-`collide-workflows` is a library of reusable GitHub Actions composite actions for collide projects. It provides standardized CI/CD workflows that can be referenced from other repositories in the collide-eslint ecosystem.
+`@collide-kit/collide-workflows` is a library of reusable GitHub Actions composite actions for CollideKit projects. It provides standardized CI/CD workflows that can be referenced from other repositories.
 
 ## Development Environment
 
@@ -26,8 +26,10 @@ yarn fmt:check:cache    # Check formatting (with cache)
 yarn fmt:fix            # Auto-fix formatting issues
 yarn fmt:fix:cache      # Auto-fix formatting (with cache)
 
-# Type checking
-yarn check-types        # Run TypeScript type checks across workspace
+# Release management (using changesets)
+yarn changeset          # Create a new changeset
+yarn changeset:version  # Update versions based on changesets
+yarn release            # Publish packages to npm
 ```
 
 ## Project Structure
@@ -59,13 +61,18 @@ Each composite action should:
 
 ### Available Actions
 
-- **actions/prepare**: Sets up CI environment with Node.js (latest), Yarn 4.12.0 via Corepack, caches dependencies (Yarn cacheFolder + node_modules), runs `yarn install --immutable`
+**actions/prepare**: Sets up CI environment with Node.js and Yarn, caches dependencies, and installs packages.
 
-### Action Implementation Details
+**Inputs** (all optional):
 
-**actions/prepare**:
+- `node-version`: Node.js version to install (default: `latest`)
+- `yarn-version`: Yarn version to install (default: `latest`)
+- `enable-cache`: Enable dependency caching (default: `true`)
+- `install-dependencies`: Run `yarn install --immutable` (default: `true`)
 
-- Uses `actions/setup-node@v6` for Node.js
+**Implementation Details**:
+
+- Uses `actions/setup-node@v6` for Node.js installation
 - Uses Corepack (built into Node.js) for Yarn installation
 - Implements two-level caching strategy:
   1. Yarn global cache (`yarn config get cacheFolder`)
