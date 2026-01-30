@@ -1,0 +1,89 @@
+# -------------------------------------------------------
+# Dependencies & Package Managers
+# -------------------------------------------------------
+node_modules/
+**/node_modules/
+.store/
+**/.store/
+
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Yarn Berry
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# -------------------------------------------------------
+# Build & Output
+# -------------------------------------------------------
+dist/
+build/
+out/
+lib/
+lib-*/
+.cache/
+.turbo/
+.eslintcache
+*.tsbuildinfo
+*.tgz
+
+# Frameworks
+.next/
+.nuxt/
+.output/
+.vercel/
+.netlify/
+.serverless/
+.docusaurus/
+
+# Coverage
+coverage/
+.nyc_output/
+*.lcov
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-debug.log*
+
+# -------------------------------------------------------
+# Env Files
+# -------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# -------------------------------------------------------
+# Editors & System
+# -------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# -------------------------------------------------------
+# Assets / Bundles / Vendors
+# -------------------------------------------------------
+*.min.js
+*.min.css
+*.bundle.js
+public/vendor/
+vendor/
+
+# -------------------------------------------------------
+# Misc
+# -------------------------------------------------------
+.changeset/
+*.md.backup
+LICENSE
+.czrc
