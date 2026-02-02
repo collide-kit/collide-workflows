@@ -120,3 +120,19 @@ runs:
               duration=$((end_time - start_time))
               echo "✅ Dependencies installed successfully in ${duration}s"
               echo "duration=${duration}" >> $GITHUB_OUTPUT
+
+        - name: Setup Summary
+          shell: bash
+          run: |
+              echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+              echo "📋 CI Environment Summary"
+              echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+              echo "🟢 Node.js: ${{ steps.setup-node.outputs.node-version }}"
+              echo "🔵 Yarn: ${{ steps.get-yarn-version.outputs.version }}"
+              if [[ "${{ inputs.enable-cache }}" == "true" ]]; then
+                echo "💾 Cache: ${{ steps.cache-deps.outputs.cache-hit == 'true' && 'HIT ✅' || 'MISS ⚠️' }}"
+              fi
+              if [[ "${{ inputs.install-dependencies }}" == "true" ]]; then
+                echo "⏱️  Install time: ${{ steps.install-deps.outputs.duration }}s"
+              fi
+              echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

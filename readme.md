@@ -105,7 +105,11 @@ jobs:
 </details>
 
 <details>
-<summary><strong>Using Outputs</strong></summary>
+<summary><strong>Using Outputs (Advanced)</strong></summary>
+
+> **Note:** The action automatically displays all key information in logs. Outputs are only needed for conditional logic or passing values to other steps.
+
+Use outputs for conditional workflows:
 
 ```yaml
 jobs:
@@ -118,14 +122,30 @@ jobs:
         id: setup
         uses: collide-kit/collide-workflows/actions/prepare@v1
 
-      - name: Display setup info
-        run: |
-          echo "Node.js: ${{ steps.setup.outputs.node-version }}"
-          echo "Yarn: ${{ steps.setup.outputs.yarn-version }}"
-          echo "Cache hit: ${{ steps.setup.outputs.cache-hit }}"
-          echo "Install took: ${{ steps.setup.outputs.install-duration }}s"
+      # Skip expensive operations if cache was restored
+      - name: Run type checking
+        if: steps.setup.outputs.cache-hit != 'true'
+        run: yarn typecheck
+
+      # Use outputs for decisions
+      - name: Notify slow installation
+        if: steps.setup.outputs.install-duration > 60
+        run: echo "⚠️ Installation took longer than expected"
 
       - run: yarn build
+```
+
+The action automatically displays this summary:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 CI Environment Summary
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟢 Node.js: v22.13.1
+🔵 Yarn: 4.12.0
+💾 Cache: HIT ✅
+⏱️  Install time: 3s
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 </details>
