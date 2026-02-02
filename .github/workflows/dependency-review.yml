@@ -16,7 +16,7 @@ jobs:
               uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v6.4.2
 
             - name: Dependency Review
-              uses: actions/dependency-review-action@4081bf99e2866ebe428fc0477b69eb4fcda7220e # v4.5.0
+              uses: actions/dependency-review-action@v4
               with:
                   # Fail the build on critical or high severity vulnerabilities
                   fail-on-severity: moderate
