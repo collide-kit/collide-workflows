@@ -1,5 +1,40 @@
 # ⚫ @collide-kit/collide-workflows
 
+## 1.2.0 ✨
+
+### Minor Release
+
+🎯 **Enhanced user experience with automatic CI environment summary**
+
+This release improves the developer experience by automatically displaying CI environment information without requiring manual output configuration. All key metrics are now shown in logs by default, while outputs remain available for advanced conditional workflow logic.
+
+### ✨ New Features
+
+#### **Automatic Summary Output**
+
+- **Auto-Display** — CI environment summary automatically shown at the end of `actions/prepare`
+  - Node.js version
+  - Yarn version
+  - Cache status (HIT/MISS)
+  - Installation duration
+- **Visual Format** — Clean, bordered summary box for easy readability
+- **Zero Configuration** — Works out of the box, no manual steps required
+- **Conditional Display** — Smart display based on enabled features (cache, install)
+
+#### **Enhanced Documentation**
+
+- **Clarified Outputs Usage** — Updated "Using Outputs (Advanced)" section in readme.md
+  - Emphasized automatic display behavior
+  - Clarified that outputs are for conditional logic only
+  - Added practical examples of output-based workflows
+- **Updated Architecture Guide** — Enhanced claude.md with:
+  - Complete project structure overview
+  - Detailed action descriptions
+  - Automated workflows documentation
+  - Release process guide
+
+---
+
 ## 1.1.0 ✨
 
 ### Minor Release
