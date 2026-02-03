@@ -37,7 +37,7 @@ runs:
         - name: Cache Yarn dependencies
           id: cache-deps
           if: inputs.enable-cache == 'true'
-          uses: actions/cache@7c9b8b1c63e48f2c17a28314f7c4e47a26c9097c # v5.2.0
+          uses: actions/cache@7c9b8b1c63e48f2c17a28314f7c4e47a26c9097c
           with:
               path: |
                   ${{ inputs.yarn-cache-dir }}
