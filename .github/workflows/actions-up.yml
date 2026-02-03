@@ -17,12 +17,37 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
-            - name: Update GitHub Actions
-              uses: azat-io/actions-up@105ff1c30d04f4b3748a1f58aca399b0ce0a111e
+            - name: Setup Node.js
+              uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af
               with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  node-version: '20'
+
+            - name: Install actions-up
+              run: npm install -g actions-up
+
+            - name: Update GitHub Actions in .github/workflows
+              run: npx actions-up --yes
+
+            - name: Update GitHub Actions in actions/
+              run: |
+                  cd actions
+                  for dir in */; do
+                      if [ -f "${dir}action.yml" ]; then
+                          echo "Checking ${dir}action.yml"
+                          cd "$dir"
+                          npx actions-up --yes || true
+                          cd ..
+                      fi
+                  done
+                  cd ..
+
+            - name: Create Pull Request
+              uses: peter-evans/create-pull-request@v7
+              with:
+                  token: ${{ secrets.PAT_TOKEN }}
                   commit-message: '`🧩 chore(deps): update github actions to latest versions`'
                   branch: deps/update-actions
+                  delete-branch: true
                   title: '`🧩 chore(deps): update github actions versions`'
                   body: |
                       This PR updates GitHub Actions to their latest versions with SHA pinning for security.
