@@ -1,5 +1,43 @@
 # ⚫ @collide-kit/collide-workflows
 
+## 1.3.0 🔄
+
+### Minor Release
+
+🔐 **Enhanced GitHub Actions security with latest versions and automated updates**
+
+This release updates all GitHub Actions to their latest versions with SHA pinning for improved security. The actions-up workflow has been refactored to use the CLI tool directly, enabling automatic updates for both workflows and composite actions.
+
+### 🔄 Dependency Updates
+
+#### **Updated GitHub Actions**
+
+- **actions/checkout** — Updated to v6.0.1 with SHA pinning
+- **actions/setup-node** — Updated to v6.2.0 with SHA pinning
+- **peter-evans/create-pull-request** — Updated to v8.1.0 with SHA pinning
+
+### 🔧 Workflow Improvements
+
+#### **Refactored actions-up Workflow**
+
+- **CLI Integration** — Switched from non-existent GitHub Action to official CLI tool
+  - Setup Node.js environment
+  - Install actions-up via npm
+  - Run updates programmatically
+- **Expanded Coverage** — Now updates actions in both locations:
+  - `.github/workflows/` — Workflow files
+  - `actions/` — Composite action files
+- **Automated Updates** — Smart iteration through composite actions directories
+- **PAT Token Support** — Uses Personal Access Token for workflow file modifications
+
+### 🔐 Security
+
+- **SHA Pinning** — All actions now use commit SHAs with version comments
+- **Reproducible Builds** — Pinned SHAs ensure consistent behavior
+- **Tag Manipulation Protection** — Prevents security risks from tag changes
+
+---
+
 ## 1.2.0 ✨
 
 ### Minor Release
