@@ -15,10 +15,10 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
-              uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+              uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
 
             - name: Setup Node.js
-              uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af
+              uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
               with:
                   node-version: '20'
 
@@ -42,7 +42,7 @@ jobs:
                   cd ..
 
             - name: Create Pull Request
-              uses: peter-evans/create-pull-request@v7
+              uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
               with:
                   token: ${{ secrets.PAT_TOKEN }}
                   commit-message: '`🧩 chore(deps): update github actions to latest versions`'
