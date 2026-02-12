@@ -1,0 +1,6 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "automerge": true,
+  "dependencyDashboardTitle": "`🔄 Dependency Dashboard · @collide-kit/collide-workflows`",
+  "extends": ["github>collide-kit/collide-renovate"]
+}

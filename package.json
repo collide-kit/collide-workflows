@@ -1,0 +1,40 @@
+{
+  "name": "@collide-kit/collide-workflows",
+  "version": "1.0.0",
+  "description": "🛠️ Reusable GitHub Actions composite actions for CollideKit projects.",
+  "keywords": [
+    "@collide-kit:github-actions",
+    "@collide-kit:workflows",
+    "@collide-kit:ci-cd",
+    "@collide-kit:composite-actions"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/collide-kit/collide-workflows"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "gratisv",
+    "email": "gratis.v@proton.me",
+    "url": "https://github.com/gratisv"
+  },
+  "type": "module",
+  "scripts": {
+    "fmt:check": "prettier -c . --config ./prettier.config.ts",
+    "fmt:check:cache": "prettier -c . --cache --config ./prettier.config.ts",
+    "fmt:fix": "prettier -w . --log-level=warn --config ./prettier.config.ts",
+    "fmt:fix:cache": "prettier -w . --cache --log-level=warn --config ./prettier.config.ts"
+  },
+  "devDependencies": {
+    "@prettier/plugin-oxc": "^0.1.3",
+    "prettier": "^3.8.1",
+    "prettier-plugin-multiline-arrays": "^4.1.3",
+    "prettier-plugin-packagejson": "^3.0.0",
+    "prettier-plugin-sort-json": "^4.2.0",
+    "typescript": "^5.9.3"
+  },
+  "packageManager": "yarn@4.12.0",
+  "publishConfig": {
+    "access": "public"
+  }
+}
